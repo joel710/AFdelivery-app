@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgroLivraison - Livraisons en cours</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#22c55e',
+secondary: '#f97316'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before {
+content: "\f3c2";
+}
+</style>
+</head>
+<body class="bg-gray-50 font-sans">
+<!-- Navigation Bar -->
+<nav class="fixed top-0 w-full bg-white shadow-sm z-50">
+<div class="flex items-center justify-between px-4 py-3">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+<span class="text-white font-bold text-sm">A</span>
+</div>
+<h1 class="font-['Pacifico'] text-primary text-lg">AgroLivraison</h1>
+</div>
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 flex items-center justify-center relative cursor-pointer">
+<i class="ri-notification-line text-gray-600 text-lg"></i>
+<div class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center">
+<span class="text-white text-xs font-bold">2</span>
+</div>
+</div>
+<img src="https://readdy.ai/api/search-image?query=Professional%20delivery%20driver%20portrait%2C%20friendly%20smile%2C%20wearing%20delivery%20uniform%2C%20realistic%20photo%20style%2C%20clean%20background%2C%20professional%20headshot&width=40&height=40&seq=profile001&orientation=squarish"
+alt="Profil" class="w-10 h-10 rounded-full object-cover cursor-pointer">
+</div>
+</div>
+</nav>
+
+<!-- Main Content -->
+<main class="pt-20 pb-20 px-4">
+<!-- Header Section -->
+<div class="mb-6">
+<div class="flex items-center justify-between mb-2">
+<h2 class="text-2xl font-bold text-gray-800">Livraisons en cours</h2>
+<div class="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+3 actives
+</div>
+</div>
+<p class="text-gray-600 text-sm">Suivez vos livraisons en temps réel</p>
+</div>
+
+<!-- View Toggle -->
+<div class="bg-gray-100 rounded-lg p-1 mb-6">
+<div class="grid grid-cols-2 gap-1">
+<button id="mapViewBtn" class="bg-white text-primary font-medium py-2 px-3 rounded text-sm !rounded-button">Vue carte</button>
+<button id="listViewBtn" class="text-gray-600 py-2 px-3 rounded text-sm cursor-pointer">Vue liste</button>
+</div>
+</div>
+
+<!-- Map View -->
+<div id="mapView" class="mb-6">
+<div class="h-64 bg-gray-200 relative overflow-hidden rounded-xl">
+<img src="https://public.readdy.ai/gen_page/map_placeholder_1280x720.png"
+alt="Carte GPS" class="w-full h-full object-cover object-center">
+<div class="absolute top-4 left-4 bg-white rounded-lg px-3 py-2 shadow-sm">
+<div class="flex items-center space-x-2">
+<div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+<span class="text-sm font-medium text-gray-800">Position actuelle</span>
+</div>
+</div>
+<div class="absolute bottom-4 right-4 bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg cursor-pointer">
+<i class="ri-focus-3-line text-gray-600 text-lg"></i>
+</div>
+<div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-lg text-sm font-medium">
+3 destinations
+</div>
+</div>
+</div>
+
+<!-- Active Deliveries List -->
+<div class="space-y-4">
+<!-- Delivery Card 1 - En collecte -->
+<div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center space-x-3">
+<div class="w-12 h-12 bg-secondary bg-opacity-10 rounded-lg flex items-center justify-center">
+<i class="ri-truck-fill text-secondary text-lg"></i>
+</div>
+<div>
+<h3 class="font-semibold text-gray-800 text-sm">Ferme Bio du Soleil</h3>
+<p class="text-gray-600 text-xs">Marie Dubois</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-lg font-bold text-primary">15€</div>
+<div class="text-xs text-gray-500">2.3 km</div>
+</div>
+</div>
+
+<!-- Progress Bar -->
+<div class="mb-4">
+<div class="flex items-center justify-between text-xs text-gray-600 mb-2">
+<span>Collecte en cours</span>
+<span>33%</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2">
+<div class="bg-secondary h-2 rounded-full w-1/3"></div>
+</div>
+</div>
+
+<!-- Locations -->
+<div class="space-y-2 mb-4">
+<div class="flex items-center space-x-2">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-map-pin-line text-secondary text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">125 Route de Campagne, Villeneuve</span>
+</div>
+<div class="flex items-center space-x-2">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-store-line text-primary text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">Dépôt Central, 45 Av. République</span>
+</div>
+</div>
+
+<!-- ETA -->
+<div class="bg-gray-50 rounded-lg p-3 mb-4">
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-600">Arrivée estimée :</span>
+<span class="text-sm font-semibold text-gray-800">14:30</span>
+</div>
+</div>
+
+<!-- Action Buttons -->
+<div class="flex space-x-2">
+<button class="flex-1 bg-primary text-white py-2.5 px-4 rounded-lg font-medium text-sm cursor-pointer !rounded-button">
+Scanner QR
+</button>
+<button class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer">
+<i class="ri-phone-line text-gray-600"></i>
+</button>
+<button class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center cursor-pointer">
+<i class="ri-error-warning-line text-red-600"></i>
+</button>
+</div>
+</div>
+
+<!-- Delivery Card 2 - En transport -->
+<div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center space-x-3">
+<div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+<i class="ri-roadster-fill text-blue-600 text-lg"></i>
+</div>
+<div>
+<h3 class="font-semibold text-gray-800 text-sm">Les Jardins de Paul</h3>
+<p class="text-gray-600 text-xs">Paul Martin</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-lg font-bold text-primary">18€</div>
+<div class="text-xs text-gray-500">1.8 km</div>
+</div>
+</div>
+
+<!-- Progress Bar -->
+<div class="mb-4">
+<div class="flex items-center justify-between text-xs text-gray-600 mb-2">
+<span>Transport en cours</span>
+<span>66%</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2">
+<div class="bg-blue-500 h-2 rounded-full w-2/3"></div>
+</div>
+</div>
+
+<!-- Locations -->
+<div class="space-y-2 mb-4">
+<div class="flex items-center space-x-2">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-checkbox-circle-fill text-green-500 text-sm"></i>
+</div>
+<span class="text-sm text-gray-700 line-through opacity-60">78 Chemin des Prés, Saint-Martin</span>
+</div>
+<div class="flex items-center space-x-2">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-store-line text-primary text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">Dépôt Nord, 12 Rue des Lilas</span>
+</div>
+</div>
+
+<!-- Temperature Alert -->
+<div class="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4">
+<div class="flex items-center space-x-2">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-temp-cold-line text-blue-600 text-sm"></i>
+</div>
+<span class="text-sm text-blue-800">Température : 4°C - Produits frais</span>
+</div>
+</div>
+
+<!-- ETA -->
+<div class="bg-gray-50 rounded-lg p-3 mb-4">
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-600">Arrivée estimée :</span>
+<span class="text-sm font-semibold text-gray-800">15:15</span>
+</div>
+</div>
+
+<!-- Action Buttons -->
+<div class="flex space-x-2">
+<button class="flex-1 bg-blue-600 text-white py-2.5 px-4 rounded-lg font-medium text-sm cursor-pointer !rounded-button">
+Confirmer livraison
+</button>
+<button class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer">
+<i class="ri-phone-line text-gray-600"></i>
+</button>
+<button class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center cursor-pointer">
+<i class="ri-error-warning-line text-red-600"></i>
+</button>
+</div>
+</div>
+
+<!-- Delivery Card 3 - Prêt pour livraison -->
+<div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center space-x-3">
+<div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+<i class="ri-check-double-fill text-green-600 text-lg"></i>
+</div>
+<div>
+<h3 class="font-semibold text-gray-800 text-sm">Maraîchage Écologique</h3>
+<p class="text-gray-600 text-xs">Sophie Leroy</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-lg font-bold text-primary">22€</div>
+<div class="text-xs text-gray-500">3.1 km</div>
+<div class="inline-block bg-green-100 text-green-600 text-xs px-2 py-0.5 rounded-full mt-1">Collecté</div>
+</div>
+</div>
+
+<!-- Progress Bar -->
+<div class="mb-4">
+<div class="flex items-center justify-between text-xs text-gray-600 mb-2">
+<span>Prêt pour livraison</span>
+<span>90%</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2">
+<div class="bg-green-500 h-2 rounded-full w-11/12"></div>
+</div>
+</div>
+
+<!-- Locations -->
+<div class="space-y-2 mb-4">
+<div class="flex items-center space-x-2">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-checkbox-circle-fill text-green-500 text-sm"></i>
+</div>
+<span class="text-sm text-gray-700 line-through opacity-60">34 Route Agricole, Beaumont</span>
+</div>
+<div class="flex items-center space-x-2">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-store-line text-primary text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">Dépôt Sud, 89 Boulevard Vert</span>
+</div>
+</div>
+
+<!-- Special Instructions -->
+<div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4">
+<div class="flex items-start space-x-2">
+<div class="w-4 h-4 flex items-center justify-center mt-0.5">
+<i class="ri-information-line text-yellow-600 text-sm"></i>
+</div>
+<div>
+<p class="text-sm text-yellow-800 font-medium">Instructions spéciales :</p>
+<p class="text-sm text-yellow-700">Manipuler avec précaution - Produits fragiles</p>
+</div>
+</div>
+</div>
+
+<!-- ETA -->
+<div class="bg-gray-50 rounded-lg p-3 mb-4">
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-600">Arrivée estimée :</span>
+<span class="text-sm font-semibold text-gray-800">16:00</span>
+</div>
+</div>
+
+<!-- Action Buttons -->
+<div class="flex space-x-2">
+<button class="flex-1 bg-green-600 text-white py-2.5 px-4 rounded-lg font-medium text-sm cursor-pointer !rounded-button">
+Démarrer livraison
+</button>
+<button class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer">
+<i class="ri-phone-line text-gray-600"></i>
+</button>
+<button class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center cursor-pointer">
+<i class="ri-error-warning-line text-red-600"></i>
+</button>
+</div>
+</div>
+</div>
+
+<!-- Quick Stats -->
+<div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 mt-6">
+<h3 class="font-semibold text-gray-800 mb-3">Résumé du jour</h3>
+<div class="grid grid-cols-3 gap-4">
+<div class="text-center">
+<div class="text-2xl font-bold text-primary">3</div>
+<div class="text-xs text-gray-600">En cours</div>
+</div>
+<div class="text-center">
+<div class="text-2xl font-bold text-green-600">8</div>
+<div class="text-xs text-gray-600">Terminées</div>
+</div>
+<div class="text-center">
+<div class="text-2xl font-bold text-gray-800">165€</div>
+<div class="text-xs text-gray-600">Gains</div>
+</div>
+</div>
+</div>
+</main>
+
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 w-full bg-white border-t border-gray-200">
+<div class="grid grid-cols-4 h-16">
+<a href="index.html" data-readdy="true" class="flex flex-col items-center justify-center space-y-1 text-gray-500">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-dashboard-line text-lg"></i>
+</div>
+<span class="text-xs">Tableau</span>
+</a>
+<button class="flex flex-col items-center justify-center space-y-1 text-primary cursor-pointer">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-truck-fill text-lg"></i>
+</div>
+<span class="text-xs font-medium">En cours</span>
+</button>
+<button class="flex flex-col items-center justify-center space-y-1 text-gray-500 cursor-pointer">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-history-line text-lg"></i>
+</div>
+<span class="text-xs">Historique</span>
+</button>
+<button class="flex flex-col items-center justify-center space-y-1 text-gray-500 cursor-pointer">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-user-line text-lg"></i>
+</div>
+<span class="text-xs">Profil</span>
+</button>
+</div>
+</nav>
+
+<!-- QR Scanner Modal -->
+<div id="qrModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+<div class="bg-white h-full flex flex-col">
+<div class="flex items-center justify-between p-4 border-b">
+<button id="closeQrModal" class="w-8 h-8 flex items-center justify-center cursor-pointer">
+<i class="ri-arrow-left-line text-xl"></i>
+</button>
+<h2 class="font-semibold text-gray-800">Scanner QR Code</h2>
+<div class="w-8"></div>
+</div>
+<div class="flex-1 bg-black relative flex items-center justify-center">
+<div class="w-64 h-64 border-2 border-white rounded-lg relative">
+<div class="absolute top-0 left-0 w-6 h-6 border-t-4 border-l-4 border-primary rounded-tl-lg"></div>
+<div class="absolute top-0 right-0 w-6 h-6 border-t-4 border-r-4 border-primary rounded-tr-lg"></div>
+<div class="absolute bottom-0 left-0 w-6 h-6 border-b-4 border-l-4 border-primary rounded-bl-lg"></div>
+<div class="absolute bottom-0 right-0 w-6 h-6 border-b-4 border-r-4 border-primary rounded-br-lg"></div>
+</div>
+<div class="absolute bottom-20 text-white text-center">
+<p class="text-lg font-medium mb-2">Scannez le code de collecte</p>
+<p class="text-sm opacity-75">Alignez le QR code dans le cadre</p>
+</div>
+</div>
+<div class="p-4 bg-white">
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-2">Code manuel :</label>
+<input type="text" placeholder="Entrez le code de commande" class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+</div>
+<button class="w-full bg-primary text-white py-3 px-4 rounded-lg font-medium cursor-pointer !rounded-button">
+Confirmer la collecte
+</button>
+</div>
+</div>
+</div>
+
+<!-- Problem Report Modal -->
+<div id="problemModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+<div class="bg-white h-full flex flex-col">
+<div class="flex items-center justify-between p-4 border-b">
+<button id="closeProblemModal" class="w-8 h-8 flex items-center justify-center cursor-pointer">
+<i class="ri-arrow-left-line text-xl"></i>
+</button>
+<h2 class="font-semibold text-gray-800">Signaler un problème</h2>
+<div class="w-8"></div>
+</div>
+<div class="flex-1 p-4">
+<div class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Type de problème :</label>
+<div class="space-y-2">
+<label class="flex items-center space-x-3 cursor-pointer">
+<input type="radio" name="problem" value="absent" class="opacity-0 absolute">
+<div class="w-5 h-5 border-2 border-gray-300 rounded-full flex items-center justify-center">
+<div class="w-2 h-2 bg-primary rounded-full hidden"></div>
+</div>
+<span class="text-sm text-gray-700">Producteur absent</span>
+</label>
+<label class="flex items-center space-x-3 cursor-pointer">
+<input type="radio" name="problem" value="damaged" class="opacity-0 absolute">
+<div class="w-5 h-5 border-2 border-gray-300 rounded-full flex items-center justify-center">
+<div class="w-2 h-2 bg-primary rounded-full hidden"></div>
+</div>
+<span class="text-sm text-gray-700">Produits endommagés</span>
+</label>
+<label class="flex items-center space-x-3 cursor-pointer">
+<input type="radio" name="problem" value="address" class="opacity-0 absolute">
+<div class="w-5 h-5 border-2 border-gray-300 rounded-full flex items-center justify-center">
+<div class="w-2 h-2 bg-primary rounded-full hidden"></div>
+</div>
+<span class="text-sm text-gray-700">Adresse introuvable</span>
+</label>
+<label class="flex items-center space-x-3 cursor-pointer">
+<input type="radio" name="problem" value="vehicle" class="opacity-0 absolute">
+<div class="w-5 h-5 border-2 border-gray-300 rounded-full flex items-center justify-center">
+<div class="w-2 h-2 bg-primary rounded-full hidden"></div>
+</div>
+<span class="text-sm text-gray-700">Problème véhicule</span>
+</label>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Description :</label>
+<textarea placeholder="Décrivez le problème en détail..." rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary resize-none"></textarea>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Photo (optionnel) :</label>
+<div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-primary transition-colors">
+<div class="w-12 h-12 flex items-center justify-center mx-auto mb-2">
+<i class="ri-camera-line text-gray-400 text-2xl"></i>
+</div>
+<p class="text-sm text-gray-600">Touchez pour prendre une photo</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 bg-gray-50">
+<div class="flex space-x-3">
+<button id="cancelProblem" class="flex-1 bg-gray-200 text-gray-700 py-3 px-4 rounded-lg font-medium cursor-pointer !rounded-button">
+Annuler
+</button>
+<button class="flex-1 bg-red-600 text-white py-3 px-4 rounded-lg font-medium cursor-pointer !rounded-button">
+Envoyer le rapport
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Chat Support Modal -->
+<div id="chatModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+<div class="bg-white h-full flex flex-col">
+<div class="flex items-center justify-between p-4 border-b">
+<button id="closeChatModal" class="w-8 h-8 flex items-center justify-center cursor-pointer">
+<i class="ri-arrow-left-line text-xl"></i>
+</button>
+<h2 class="font-semibold text-gray-800">Support AgroLivraison</h2>
+<div class="w-8"></div>
+</div>
+<div class="flex-1 p-4 overflow-y-auto">
+<div class="space-y-4">
+<div class="flex items-start space-x-3">
+<div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+<span class="text-white font-bold text-xs">S</span>
+</div>
+<div class="bg-gray-100 rounded-lg p-3 max-w-xs">
+<p class="text-sm text-gray-800">Bonjour Pierre ! Comment puis-je vous aider aujourd'hui ?</p>
+<span class="text-xs text-gray-500 mt-1 block">14:25</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 border-t">
+<div class="flex space-x-2">
+<input type="text" placeholder="Tapez votre message..." class="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+<button class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center cursor-pointer">
+<i class="ri-send-plane-fill text-white text-lg"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<script id="viewToggleScript">
+document.addEventListener('DOMContentLoaded', function() {
+const mapViewBtn = document.getElementById('mapViewBtn');
+const listViewBtn = document.getElementById('listViewBtn');
+const mapView = document.getElementById('mapView');
+
+mapViewBtn.addEventListener('click', function() {
+mapViewBtn.classList.add('bg-white', 'text-primary', 'font-medium');
+mapViewBtn.classList.remove('text-gray-600');
+listViewBtn.classList.remove('bg-white', 'text-primary', 'font-medium');
+listViewBtn.classList.add('text-gray-600');
+mapView.classList.remove('hidden');
+});
+
+listViewBtn.addEventListener('click', function() {
+listViewBtn.classList.add('bg-white', 'text-primary', 'font-medium');
+listViewBtn.classList.remove('text-gray-600');
+mapViewBtn.classList.remove('bg-white', 'text-primary', 'font-medium');
+mapViewBtn.classList.add('text-gray-600');
+mapView.classList.add('hidden');
+});
+});
+</script>
+
+<script id="qrScannerScript">
+document.addEventListener('DOMContentLoaded', function() {
+const qrModal = document.getElementById('qrModal');
+const closeQrModal = document.getElementById('closeQrModal');
+const scannerButtons = document.querySelectorAll('button');
+
+scannerButtons.forEach(button => {
+if (button.textContent.includes('Scanner QR')) {
+button.addEventListener('click', function() {
+qrModal.classList.remove('hidden');
+});
+}
+});
+
+closeQrModal.addEventListener('click', function() {
+qrModal.classList.add('hidden');
+});
+});
+</script>
+
+<script id="problemReportScript">
+document.addEventListener('DOMContentLoaded', function() {
+const problemModal = document.getElementById('problemModal');
+const closeProblemModal = document.getElementById('closeProblemModal');
+const cancelProblem = document.getElementById('cancelProblem');
+const problemButtons = document.querySelectorAll('.bg-red-100');
+
+problemButtons.forEach(button => {
+button.addEventListener('click', function() {
+problemModal.classList.remove('hidden');
+});
+});
+
+closeProblemModal.addEventListener('click', function() {
+problemModal.classList.add('hidden');
+});
+
+cancelProblem.addEventListener('click', function() {
+problemModal.classList.add('hidden');
+});
+
+const radioInputs = document.querySelectorAll('input[type="radio"]');
+radioInputs.forEach(input => {
+input.addEventListener('change', function() {
+radioInputs.forEach(radio => {
+const indicator = radio.parentElement.querySelector('.w-2');
+if (radio.checked) {
+indicator.classList.remove('hidden');
+} else {
+indicator.classList.add('hidden');
+}
+});
+});
+});
+});
+</script>
+
+<script id="navigationScript">
+document.addEventListener('DOMContentLoaded', function() {
+const navButtons = document.querySelectorAll('nav:last-child button, nav:last-child a');
+navButtons.forEach(button => {
+button.addEventListener('click', function() {
+if (this.tagName === 'A') return;
+navButtons.forEach(btn => {
+btn.classList.remove('text-primary');
+btn.classList.add('text-gray-500');
+const icon = btn.querySelector('i');
+if (icon) {
+icon.className = icon.className.replace('-fill', '-line');
+}
+const span = btn.querySelector('span');
+if (span) {
+span.classList.remove('font-medium');
+}
+});
+this.classList.add('text-primary');
+this.classList.remove('text-gray-500');
+const icon = this.querySelector('i');
+if (icon && !icon.className.includes('-fill')) {
+icon.className = icon.className.replace('-line', '-fill');
+}
+const span = this.querySelector('span');
+if (span) {
+span.classList.add('font-medium');
+}
+});
+});
+});
+</script>
+
+<script id="deliveryActionsScript">
+document.addEventListener('DOMContentLoaded', function() {
+const confirmButtons = document.querySelectorAll('button');
+
+confirmButtons.forEach(button => {
+if (button.textContent.includes('Confirmer livraison')) {
+button.addEventListener('click', function() {
+const card = this.closest('.bg-white');
+const progressBar = card.querySelector('.bg-blue-500');
+const statusText = card.querySelector('.text-xs.text-gray-600');
+const etaTime = card.querySelector('.text-sm.font-semibold.text-gray-800');
+
+if (progressBar) {
+progressBar.classList.remove('bg-blue-500', 'w-2/3');
+progressBar.classList.add('bg-green-500', 'w-full');
+}
+if (statusText) {
+statusText.textContent = 'Livraison terminée';
+}
+if (etaTime) {
+etaTime.textContent = 'Terminé';
+}
+this.textContent = 'Livraison confirmée';
+this.classList.remove('bg-blue-600');
+this.classList.add('bg-green-600');
+this.disabled = true;
+});
+}
+});
+});
+</script>
+
+</body>
+</html>
