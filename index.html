@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgroLivraison - Tableau de Bord</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#22c55e',
+secondary: '#f97316'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before {
+content: "\f3c2";
+}
+</style>
+</head>
+<body class="bg-gray-50 font-sans">
+<!-- Navigation Bar -->
+<nav class="fixed top-0 w-full bg-white shadow-sm z-50">
+<div class="flex items-center justify-between px-4 py-3">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+<span class="text-white font-bold text-sm">A</span>
+</div>
+<h1 class="font-['Pacifico'] text-primary text-lg">AgroLivraison</h1>
+</div>
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-notification-line text-gray-600 text-lg"></i>
+</div>
+<img src="https://readdy.ai/api/search-image?query=Professional%20delivery%20driver%20portrait%2C%20friendly%20smile%2C%20wearing%20delivery%20uniform%2C%20realistic%20photo%20style%2C%20clean%20background%2C%20professional%20headshot&width=40&height=40&seq=profile001&orientation=squarish"
+alt="Profil" class="w-10 h-10 rounded-full object-cover">
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-20 pb-20 px-4">
+<!-- Welcome Section -->
+<div class="mb-6">
+<h2 class="text-xl font-semibold text-gray-800 mb-1">Bonjour Pierre !</h2>
+<p class="text-gray-600 text-sm">Voici vos livraisons disponibles aujourd'hui</p>
+</div>
+<!-- Stats Cards -->
+<div class="grid grid-cols-3 gap-3 mb-6">
+<div class="bg-white rounded-lg p-3 text-center shadow-sm">
+<div class="text-2xl font-bold text-primary">12</div>
+<div class="text-xs text-gray-600">Disponibles</div>
+</div>
+<div class="bg-white rounded-lg p-3 text-center shadow-sm">
+<div class="text-2xl font-bold text-secondary">3</div>
+<div class="text-xs text-gray-600">En cours</div>
+</div>
+<div class="bg-white rounded-lg p-3 text-center shadow-sm">
+<div class="text-2xl font-bold text-gray-800">45€</div>
+<div class="text-xs text-gray-600">Aujourd'hui</div>
+</div>
+</div>
+<!-- Filter Tabs -->
+<div class="bg-gray-100 rounded-lg p-1 mb-6">
+<div class="grid grid-cols-3 gap-1">
+<button class="bg-white text-primary font-medium py-2 px-3 rounded text-sm !rounded-button">Toutes</button>
+<button class="text-gray-600 py-2 px-3 rounded text-sm cursor-pointer">Proches</button>
+<button class="text-gray-600 py-2 px-3 rounded text-sm cursor-pointer">Urgentes</button>
+</div>
+</div>
+<!-- Delivery Cards -->
+<div class="space-y-4">
+<!-- Delivery Card 1 -->
+<div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center space-x-3">
+<img src="https://readdy.ai/api/search-image?query=Fresh%20organic%20vegetables%20basket%2C%20colorful%20produce%2C%20farmer%20market%20style%2C%20natural%20lighting%2C%20clean%20white%20background%2C%20high%20quality%20photography&width=50&height=50&seq=basket001&orientation=squarish"
+alt="Panier" class="w-12 h-12 rounded-lg object-cover">
+<div>
+<h3 class="font-semibold text-gray-800 text-sm">Ferme Bio du Soleil</h3>
+<p class="text-gray-600 text-xs">Marie Dubois</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-lg font-bold text-primary">15€</div>
+<div class="text-xs text-gray-500">2.3 km</div>
+</div>
+</div>
+<div class="space-y-2 mb-4">
+<div class="flex items-center space-x-2">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-map-pin-line text-secondary text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">125 Route de Campagne, Villeneuve</span>
+</div>
+<div class="flex items-center space-x-2">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-store-line text-primary text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">Dépôt Central, 45 Av. République</span>
+</div>
+</div>
+<div class="flex space-x-2">
+<button class="flex-1 bg-primary text-white py-2.5 px-4 rounded-lg font-medium text-sm cursor-pointer !rounded-button">
+Accepter la course
+</button>
+<button class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer">
+<i class="ri-phone-line text-gray-600"></i>
+</button>
+</div>
+</div>
+<!-- Delivery Card 2 -->
+<div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center space-x-3">
+<img src="https://readdy.ai/api/search-image?query=Fresh%20fruits%20and%20vegetables%20box%2C%20organic%20produce%20delivery%2C%20colorful%20healthy%20food%2C%20clean%20white%20background%2C%20professional%20product%20photography&width=50&height=50&seq=basket002&orientation=squarish"
+alt="Panier" class="w-12 h-12 rounded-lg object-cover">
+<div>
+<h3 class="font-semibold text-gray-800 text-sm">Les Jardins de Paul</h3>
+<p class="text-gray-600 text-xs">Paul Martin</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-lg font-bold text-primary">18€</div>
+<div class="text-xs text-gray-500">1.8 km</div>
+</div>
+</div>
+<div class="space-y-2 mb-4">
+<div class="flex items-center space-x-2">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-map-pin-line text-secondary text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">78 Chemin des Prés, Saint-Martin</span>
+</div>
+<div class="flex items-center space-x-2">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-store-line text-primary text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">Dépôt Nord, 12 Rue des Lilas</span>
+</div>
+</div>
+<div class="flex space-x-2">
+<button class="flex-1 bg-primary text-white py-2.5 px-4 rounded-lg font-medium text-sm cursor-pointer !rounded-button">
+Accepter la course
+</button>
+<button class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer">
+<i class="ri-phone-line text-gray-600"></i>
+</button>
+</div>
+</div>
+<!-- Delivery Card 3 -->
+<div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center space-x-3">
+<img src="https://readdy.ai/api/search-image?query=Organic%20farm%20produce%20basket%2C%20fresh%20seasonal%20vegetables%2C%20artisanal%20packaging%2C%20natural%20lighting%2C%20clean%20background%2C%20high%20quality%20food%20photography&width=50&height=50&seq=basket003&orientation=squarish"
+alt="Panier" class="w-12 h-12 rounded-lg object-cover">
+<div>
+<h3 class="font-semibold text-gray-800 text-sm">Maraîchage Écologique</h3>
+<p class="text-gray-600 text-xs">Sophie Leroy</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-lg font-bold text-primary">22€</div>
+<div class="text-xs text-gray-500">3.1 km</div>
+<div class="inline-block bg-red-100 text-red-600 text-xs px-2 py-0.5 rounded-full mt-1">Urgent</div>
+</div>
+</div>
+<div class="space-y-2 mb-4">
+<div class="flex items-center space-x-2">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-map-pin-line text-secondary text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">34 Route Agricole, Beaumont</span>
+</div>
+<div class="flex items-center space-x-2">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-store-line text-primary text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">Dépôt Sud, 89 Boulevard Vert</span>
+</div>
+</div>
+<div class="flex space-x-2">
+<button class="flex-1 bg-primary text-white py-2.5 px-4 rounded-lg font-medium text-sm cursor-pointer !rounded-button">
+Accepter la course
+</button>
+<button class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer">
+<i class="ri-phone-line text-gray-600"></i>
+</button>
+</div>
+</div>
+<!-- Delivery Card 4 -->
+<div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center space-x-3">
+<img src="https://readdy.ai/api/search-image?query=Local%20farm%20fresh%20produce%20box%2C%20seasonal%20organic%20vegetables%2C%20sustainable%20packaging%2C%20natural%20daylight%2C%20clean%20white%20background%2C%20professional%20food%20styling&width=50&height=50&seq=basket004&orientation=squarish"
+alt="Panier" class="w-12 h-12 rounded-lg object-cover">
+<div>
+<h3 class="font-semibold text-gray-800 text-sm">Ferme des Collines</h3>
+<p class="text-gray-600 text-xs">Jean Moreau</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-lg font-bold text-primary">12€</div>
+<div class="text-xs text-gray-500">4.2 km</div>
+</div>
+</div>
+<div class="space-y-2 mb-4">
+<div class="flex items-center space-x-2">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-map-pin-line text-secondary text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">67 Chemin Rural, Montvert</span>
+</div>
+<div class="flex items-center space-x-2">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-store-line text-primary text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">Dépôt Est, 23 Place du Marché</span>
+</div>
+</div>
+<div class="flex space-x-2">
+<button class="flex-1 bg-primary text-white py-2.5 px-4 rounded-lg font-medium text-sm cursor-pointer !rounded-button">
+Accepter la course
+</button>
+<button class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer">
+<i class="ri-phone-line text-gray-600"></i>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 w-full bg-white border-t border-gray-200">
+<div class="grid grid-cols-4 h-16">
+<button class="flex flex-col items-center justify-center space-y-1 text-primary cursor-pointer">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-dashboard-fill text-lg"></i>
+</div>
+<span class="text-xs font-medium">Tableau</span>
+</button>
+<a href="https://readdy.ai/home/5175d1b8-cdc8-4c92-a49f-c5a29ca603ac/83fb8c72-ca24-4cee-9ecf-2dae38aec2ef" data-readdy="true" class="flex flex-col items-center justify-center space-y-1 text-gray-500">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-truck-line text-lg"></i>
+</div>
+<span class="text-xs">En cours</span>
+</a>
+<button class="flex flex-col items-center justify-center space-y-1 text-gray-500 cursor-pointer">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-history-line text-lg"></i>
+</div>
+<span class="text-xs">Historique</span>
+</button>
+<button class="flex flex-col items-center justify-center space-y-1 text-gray-500 cursor-pointer">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-user-line text-lg"></i>
+</div>
+<span class="text-xs">Profil</span>
+</button>
+</div>
+</nav>
+<!-- Delivery Detail Modal (Hidden by default) -->
+<div id="deliveryModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+<div class="bg-white h-full flex flex-col">
+<!-- Modal Header -->
+<div class="flex items-center justify-between p-4 border-b">
+<button id="closeModal" class="w-8 h-8 flex items-center justify-center cursor-pointer">
+<i class="ri-arrow-left-line text-xl"></i>
+</button>
+<h2 class="font-semibold text-gray-800">Détails de la livraison</h2>
+<div class="w-8"></div>
+</div>
+<!-- Map Section -->
+<div class="h-48 bg-gray-200 relative overflow-hidden">
+<img src="https://public.readdy.ai/gen_page/map_placeholder_1280x720.png"
+alt="Carte" class="w-full h-full object-cover object-center">
+<div class="absolute top-4 right-4 bg-white rounded-lg px-3 py-1 shadow-sm">
+<span class="text-sm font-medium text-gray-800">2.3 km</span>
+</div>
+</div>
+<!-- Producer Info -->
+<div class="p-4 bg-white border-b">
+<div class="flex items-center space-x-3 mb-3">
+<img src="https://readdy.ai/api/search-image?query=Friendly%20female%20farmer%20portrait%2C%20wearing%20work%20clothes%2C%20smiling%2C%20outdoor%20farm%20setting%2C%20natural%20lighting%2C%20professional%20headshot%20style&width=50&height=50&seq=farmer001&orientation=squarish"
+alt="Producteur" class="w-12 h-12 rounded-full object-cover">
+<div class="flex-1">
+<h3 class="font-semibold text-gray-800">Marie Dubois</h3>
+<p class="text-sm text-gray-600">Ferme Bio du Soleil</p>
+</div>
+<button class="w-10 h-10 bg-primary rounded-full flex items-center justify-center cursor-pointer">
+<i class="ri-phone-fill text-white"></i>
+</button>
+</div>
+<div class="bg-gray-50 rounded-lg p-3">
+<p class="text-sm text-gray-700 mb-1">Code commande :</p>
+<p class="font-mono text-lg font-bold text-gray-800">#AGR2025001</p>
+</div>
+</div>
+<!-- Delivery Steps -->
+<div class="flex-1 p-4">
+<h3 class="font-semibold text-gray-800 mb-4">Étapes de livraison</h3>
+<div class="space-y-4">
+<!-- Step 1 -->
+<div class="flex items-start space-x-3">
+<div class="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0">
+<span class="text-white font-bold text-sm">1</span>
+</div>
+<div class="flex-1">
+<h4 class="font-medium text-gray-800">Collecte chez le producteur</h4>
+<p class="text-sm text-gray-600">125 Route de Campagne, Villeneuve</p>
+<button id="arrivalBtn" class="mt-2 bg-secondary text-white px-4 py-2 rounded-lg text-sm cursor-pointer !rounded-button">
+Signaler l'arrivée
+</button>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex items-start space-x-3 opacity-50">
+<div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center flex-shrink-0">
+<span class="text-white font-bold text-sm">2</span>
+</div>
+<div class="flex-1">
+<h4 class="font-medium text-gray-800">En route vers le dépôt</h4>
+<p class="text-sm text-gray-600">Transport sécurisé</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex items-start space-x-3 opacity-50">
+<div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center flex-shrink-0">
+<span class="text-white font-bold text-sm">3</span>
+</div>
+<div class="flex-1">
+<h4 class="font-medium text-gray-800">Livraison au dépôt</h4>
+<p class="text-sm text-gray-600">Dépôt Central, 45 Av. République</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="p-4 bg-gray-50">
+<div class="flex space-x-3">
+<button class="flex-1 bg-gray-200 text-gray-700 py-3 px-4 rounded-lg font-medium cursor-pointer !rounded-button">
+Annuler
+</button>
+<a href="https://readdy.ai/home/5175d1b8-cdc8-4c92-a49f-c5a29ca603ac/abf1831e-4824-41ce-8f1c-d3190f32762c" data-readdy="true" class="flex-1">
+<button class="w-full bg-primary text-white py-3 px-4 rounded-lg font-medium cursor-pointer !rounded-button">
+Commencer
+</button>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- QR Code Scanner Modal -->
+<div id="scannerModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+<div class="bg-white h-full flex flex-col">
+<!-- Scanner Header -->
+<div class="flex items-center justify-between p-4 border-b">
+<button id="closeScannerModal" class="w-8 h-8 flex items-center justify-center cursor-pointer">
+<i class="ri-arrow-left-line text-xl"></i>
+</button>
+<h2 class="font-semibold text-gray-800">Scanner le code</h2>
+<div class="w-8"></div>
+</div>
+<!-- Scanner Area -->
+<div class="flex-1 bg-black relative flex items-center justify-center">
+<div class="w-64 h-64 border-2 border-white rounded-lg relative">
+<div class="absolute top-0 left-0 w-6 h-6 border-t-4 border-l-4 border-primary rounded-tl-lg"></div>
+<div class="absolute top-0 right-0 w-6 h-6 border-t-4 border-r-4 border-primary rounded-tr-lg"></div>
+<div class="absolute bottom-0 left-0 w-6 h-6 border-b-4 border-l-4 border-primary rounded-bl-lg"></div>
+<div class="absolute bottom-0 right-0 w-6 h-6 border-b-4 border-r-4 border-primary rounded-br-lg"></div>
+</div>
+<div class="absolute bottom-20 text-white text-center">
+<p class="text-lg font-medium mb-2">Scannez le QR Code</p>
+<p class="text-sm opacity-75">Positionnez le code dans le cadre</p>
+</div>
+</div>
+<!-- Manual Code Input -->
+<div class="p-4 bg-white">
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-2">Ou saisissez le code manuellement :</label>
+<input type="text" placeholder="Entrez le code de commande"
+class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+</div>
+<button class="w-full bg-primary text-white py-3 px-4 rounded-lg font-medium cursor-pointer !rounded-button">
+Valider le code
+</button>
+</div>
+</div>
+</div>
+<script id="modalScript">
+document.addEventListener('DOMContentLoaded', function() {
+const deliveryModal = document.getElementById('deliveryModal');
+const closeModal = document.getElementById('closeModal');
+const acceptButtons = document.querySelectorAll('.bg-primary');
+acceptButtons.forEach(button => {
+if (button.textContent.includes('Accepter la course')) {
+button.addEventListener('click', function() {
+deliveryModal.classList.remove('hidden');
+});
+}
+});
+closeModal.addEventListener('click', function() {
+deliveryModal.classList.add('hidden');
+});
+});
+</script>
+<script id="scannerScript">
+document.addEventListener('DOMContentLoaded', function() {
+const scannerModal = document.getElementById('scannerModal');
+const closeScannerModal = document.getElementById('closeScannerModal');
+const arrivalBtn = document.getElementById('arrivalBtn');
+arrivalBtn.addEventListener('click', function() {
+scannerModal.classList.remove('hidden');
+});
+closeScannerModal.addEventListener('click', function() {
+scannerModal.classList.add('hidden');
+});
+});
+</script>
+<script id="tabScript">
+document.addEventListener('DOMContentLoaded', function() {
+const tabButtons = document.querySelectorAll('.bg-gray-100 button');
+tabButtons.forEach(button => {
+button.addEventListener('click', function() {
+tabButtons.forEach(btn => {
+btn.classList.remove('bg-white', 'text-primary', 'font-medium');
+btn.classList.add('text-gray-600');
+});
+this.classList.add('bg-white', 'text-primary', 'font-medium');
+this.classList.remove('text-gray-600');
+});
+});
+});
+</script>
+<script id="navigationScript">
+document.addEventListener('DOMContentLoaded', function() {
+const navButtons = document.querySelectorAll('nav:last-child button, nav:last-child a');
+navButtons.forEach(button => {
+button.addEventListener('click', function() {
+navButtons.forEach(btn => {
+btn.classList.remove('text-primary');
+btn.classList.add('text-gray-500');
+const icon = btn.querySelector('i');
+if (icon) {
+icon.className = icon.className.replace('-fill', '-line');
+}
+});
+this.classList.add('text-primary');
+this.classList.remove('text-gray-500');
+const icon = this.querySelector('i');
+if (icon && !icon.className.includes('-fill')) {
+icon.className = icon.className.replace('-line', '-fill');
+}
+});
+});
+});
+</script>
+</body>
+</html>
